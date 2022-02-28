@@ -2,6 +2,11 @@ import Service from "../components/Service";
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
+import RecipeImage from "../assets/images/recipe.jpg";
+import FridgeImage from "../assets/images/fridge.jpg";
+import ShopImage from "../assets/images/shop.jpeg";
+import SearchImage from "../assets/images/search.jpg";
+
 
 // import MuiImageSlider from 'mui-image-slider';
 // // import { UserContext } from '../context/UserContext';
@@ -22,20 +27,25 @@ export default function Home() {
 
   return (
     <div>
-      <Container maxWidth="sm" className="section">
+      <Container maxWidth="lg" className="section">
 
-        <Grid container rowSpacing={2} spacing={4}>
+        <Grid container rowSpacing={2} spacing={2} justifyContent="center">
 
-          <Grid item xs={12} sm={6} md={4}>
-            <Service />
+          <Grid item xs={12} sm={6} md={3}>
+            <Service image={RecipeImage} name="Share Your Recipes" desc="Share your recipes with your friends, and wait for the feedback."/>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={4}>
-            <Service />
+          <Grid item xs={12} sm={6} md={3}>
+            <Service image={FridgeImage} name="Manage Your Fridge" desc="Manage your fridge by adding products using a built-in barcode scanner." />
           </Grid>
 
-          <Grid item xs={12} sm={12} md={4}>
-            <Service />
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Service image={ShopImage} name="Shop Missing Ingredients" desc="Shop missing ingredients from our ButlerChef Shop with One Click Away."/>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={3}>
+            <Service image={SearchImage} name="Find Quick Recipes" desc="Search for recipes based on the time and day or your fridge products."/>
           </Grid>
 
         </Grid>
