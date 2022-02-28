@@ -7,9 +7,9 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { NavLink } from "react-router-dom";
+import '../assets/css/NavBar.css'
 
 const pages = ['Home', 'About', 'Contact'];
 
@@ -69,7 +69,11 @@ const NavBar = () => {
                             {/* Menu Items */}
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <NavLink to={"/" + page}>{page}</NavLink>
+                                    <NavLink to={"/" + page}
+                                        className={isActive =>
+                                            "nav-link " + (!isActive ? "NavBar_unselected" : "NavBar_selected")
+                                        }
+                                    >{page}</NavLink>
                                 </MenuItem>
                             ))}
                             <MenuItem key="Login" onClick={handleCloseNavMenu}>
@@ -89,12 +93,22 @@ const NavBar = () => {
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'space-evenly' }}>
                         {pages.map((page) => (
-                            <NavLink to={"/" + page}>{page}</NavLink>
+                            <NavLink
+                                to={"/" + page}
+                                className={isActive =>
+                                    "nav-link " + (!isActive ? "NavBar_unselected" : "NavBar_selected")
+                                }
+                            >{page}</NavLink>
                         ))}
                     </Box>
 
                     <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-                        <NavLink to="/login" >Login</NavLink>
+                        <NavLink
+                            to="/login"
+                            className={isActive =>
+                                "nav-link " + (!isActive ? "NavBar_unselected" : "NavBar_selected")
+                            }
+                        >Login</NavLink>
                     </Box>
                 </Toolbar>
             </Container>

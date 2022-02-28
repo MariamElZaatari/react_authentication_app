@@ -1,0 +1,10 @@
+/* NavBar_ */
+
+.NavBar_selected{
+text-decoration: none;
+color: white;
+}
+
+.NavBar_unselected{
+    color: rgb(218, 51, 51);
+}
