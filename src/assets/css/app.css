@@ -28,6 +28,9 @@
 .clr_brown_text{
     color: #6F5745 !important;
 }
+.clr_white_text{
+    color: #FFFFFF !important;
+}
 .section{
     margin-top: 50px;
 }
