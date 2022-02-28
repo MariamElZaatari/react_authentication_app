@@ -85,7 +85,7 @@ export default function Login() {
   return (
     <Fragment>
 
-      <Container maxWidth="sm" className='login_text_center'>
+      <Container maxWidth="sm" align="center" className='section'>
         <br />
         <br />
         <TextField
