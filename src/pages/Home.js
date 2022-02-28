@@ -7,6 +7,11 @@ import FridgeImage from "../assets/images/fridge.jpg";
 import ShopImage from "../assets/images/shop.jpeg";
 import SearchImage from "../assets/images/search.jpg";
 import Typography from '@mui/material/Typography';
+import ImageSlider from '../components/ImageSlider';
+import { SliderData } from '../components/SliderData';
+import '../assets/css/slider.css';
+
+
 
 // import MuiImageSlider from 'mui-image-slider';
 
@@ -27,8 +32,11 @@ export default function Home() {
 
   return (
     <div>
-
       <Container maxWidth="lg" className="section">
+      <ImageSlider slides={SliderData}/>
+      </Container>
+      <Container maxWidth="lg" className="section">
+
         <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text">
           Our Services
         </Typography>
