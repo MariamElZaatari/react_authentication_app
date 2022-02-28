@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from 'react'
 import { UserContext } from '../context/UserContext'
+import AuthService from '../services/AuthService';
 
 export default function Login() {
 
@@ -7,18 +8,7 @@ export default function Login() {
 
 
   const loginHandler = () => {
-    setUser({
-      id: 1,
-      email: "unknown",
-      first_name: "Omar",
-      last_name: "unknown",
-      age: 0,
-      gender: "F",
-      created_at: "unknown",
-      access_token: "unknown",
-      token_type: "unknown",
-      expires_in: 0 //seconds
-  })
+    // AuthService.Login()
   }
 
   return (
