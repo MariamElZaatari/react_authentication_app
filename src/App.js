@@ -11,6 +11,8 @@ import Dashboard from "./pages/Dashboard";
 import NavBar from "./components/NavBar";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import './assets/css/app.css';
+
 
 export default function App() {
   return (

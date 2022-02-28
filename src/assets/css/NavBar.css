@@ -1,10 +1,13 @@
 /* NavBar_ */
 
-.NavBar_selected{
-text-decoration: none;
-color: white;
+.NavBar_selected {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
 }
 
-.NavBar_unselected{
-    color: rgb(218, 51, 51);
+.NavBar_unselected {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
 }

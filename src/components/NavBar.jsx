@@ -9,7 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import { NavLink } from "react-router-dom";
-import '../assets/css/NavBar.css'
+import '../assets/css/NavBar.css';
 
 const pages = ['Home', 'About', 'Contact'];
 
@@ -25,7 +25,7 @@ const NavBar = () => {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" className="clr_green">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
@@ -33,6 +33,7 @@ const NavBar = () => {
                         noWrap
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                        fontWeight="900"
                     >
                         Butler & Chef
                     </Typography>
