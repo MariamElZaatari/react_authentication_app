@@ -1,0 +1,20 @@
+/* login_ */
+
+.login_text_center {
+    text-align: center;
+}
+
+.login_text_alert {
+    width: 200px;
+    margin: auto;
+    color: white !important;
+}
+
+.login_text_alert svg {
+    color: white !important;
+}
+
+#login_no_account:hover {
+    cursor: pointer;
+    color: blue;
+}
