@@ -11,7 +11,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function LandPage() {
+export default function Home() {
   return (
     <div>
       <Grid container spacing={2}>

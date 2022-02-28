@@ -4,11 +4,13 @@ import {
   Route
 } from "react-router-dom";
 
-import LandPage from "./pages/LandPage";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import NavBar from "./components/NavBar";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 export default function App() {
   return (
@@ -17,7 +19,9 @@ export default function App() {
       <NavBar />
       
       <Routes>
-        <Route path='/landPage' element={<LandPage />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/dashboard' element={<Dashboard />} />
