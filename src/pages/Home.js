@@ -6,9 +6,10 @@ import RecipeImage from "../assets/images/recipe.jpg";
 import FridgeImage from "../assets/images/fridge.jpg";
 import ShopImage from "../assets/images/shop.jpeg";
 import SearchImage from "../assets/images/search.jpg";
-
+import Typography from '@mui/material/Typography';
 
 // import MuiImageSlider from 'mui-image-slider';
+
 // // import { UserContext } from '../context/UserContext';
 
 // const images = [
@@ -20,19 +21,21 @@ import SearchImage from "../assets/images/search.jpg";
 
 // <MuiImageSlider images={images}/>
 
-
 export default function Home() {
 
   // const { user, setUser } = useContext(UserContext);
 
   return (
     <div>
-      <Container maxWidth="lg" className="section">
 
+      <Container maxWidth="lg" className="section">
+        <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text">
+          Our Services
+        </Typography>
         <Grid container rowSpacing={2} spacing={2} justifyContent="center">
 
           <Grid item xs={12} sm={6} md={3}>
-            <Service image={RecipeImage} name="Share Your Recipes" desc="Share your recipes with your friends, and wait for the feedback."/>
+            <Service image={RecipeImage} name="Share Your Recipes" desc="Share your recipes with your friends, and wait for the feedback." />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
@@ -41,19 +44,16 @@ export default function Home() {
 
 
           <Grid item xs={12} sm={6} md={3}>
-            <Service image={ShopImage} name="Shop Missing Ingredients" desc="Shop missing ingredients from our ButlerChef Shop with One Click Away."/>
+            <Service image={ShopImage} name="Shop Missing Ingredients" desc="Shop missing ingredients from our ButlerChef Shop with One Click Away." />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <Service image={SearchImage} name="Find Quick Recipes" desc="Search for recipes based on the time and day or your fridge products."/>
+            <Service image={SearchImage} name="Find Quick Recipes" desc="Search for recipes based on the time and day or your fridge products." />
           </Grid>
 
         </Grid>
       </Container>
       {/* <MuiImageSlider/> */}
-      Services
-
-
     </div>
   )
 }

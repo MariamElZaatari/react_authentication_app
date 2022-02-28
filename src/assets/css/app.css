@@ -13,6 +13,21 @@
 .clr_brown{
     background-color: #6F5745 !important;
 }
+.clr_green_text{
+    color: #5ACE7F !important;
+}
+.clr_red_text{
+    color: #BF212F !important;
+}
+.clr_gray_text{
+    color: #C8CBD2 !important;
+}
+.clr_placeholder_text{
+    color: #C6CACC !important;
+}
+.clr_brown_text{
+    color: #6F5745 !important;
+}
 .section{
     margin-top: 50px;
 }

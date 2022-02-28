@@ -18,7 +18,7 @@ export default function MediaCard(props) {
           image={image}
         />
         <CardContent height= '45vw'>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" className="clr_brown_text">
           {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
