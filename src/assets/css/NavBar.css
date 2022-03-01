@@ -1,13 +1,39 @@
 /* NavBar_ */
 
-.NavBar_selected {
+.not_active {
     text-decoration: none;
     color: white;
-    font-weight: 700;
+    text-transform: uppercase;
+    font-weight: 300;
 }
 
-.NavBar_unselected {
+.active {
     text-decoration: none;
     color: white;
-    font-weight: 400;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.logo {
+    letter-spacing: 0.21em !important;
+}
+
+.NavBar_btn {
+    border-color: #ffffff;
+    background-color: white;
+    border-radius: 3px;
+    padding: 5px 20px 5px 20px ;
+    color: #5ACE7F;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.NavBar_btn:hover {
+    border-color: #ffffff;
+    background-color: white;
+    border-radius: 3px;
+    padding: 5px 20px 5px 20px ;
+    color: #5ACE7F;
+    font-weight: 500;
+    text-decoration: none;
 }

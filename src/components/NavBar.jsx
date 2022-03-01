@@ -34,6 +34,7 @@ const NavBar = () => {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                         fontWeight="900"
+                        letterSpacing="10"
                     >
                         Butler & Chef
                     </Typography>
@@ -70,20 +71,21 @@ const NavBar = () => {
                             {/* Menu Items */}
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <NavLink to={"/" + page}
-                                        className={isActive =>
-                                            "nav-link " + (!isActive ? "NavBar_unselected" : "NavBar_selected")
-                                        }
+                                    <NavLink
+                                        to={"/" + page}
+                                        activeClassName="active" className="nav-link not_active"
                                     >{page}</NavLink>
                                 </MenuItem>
                             ))}
                             <MenuItem key="Login" onClick={handleCloseNavMenu}>
-                                <NavLink to="/login" >Login</NavLink>
+                                <NavLink to="/login" activeClassName="active" className="nav-link not_active">Login</NavLink>
                             </MenuItem>
                         </Menu>
                     </Box>
 
+
                     <Typography
+                        className="logo"
                         variant="h6"
                         noWrap
                         component="div"
@@ -96,9 +98,7 @@ const NavBar = () => {
                         {pages.map((page) => (
                             <NavLink
                                 to={"/" + page}
-                                className={isActive =>
-                                    "nav-link " + (!isActive ? "NavBar_unselected" : "NavBar_selected")
-                                }
+                                activeClassName="active" className="nav-link not_active"
                             >{page}</NavLink>
                         ))}
                     </Box>
@@ -106,9 +106,7 @@ const NavBar = () => {
                     <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
                         <NavLink
                             to="/login"
-                            className={isActive =>
-                                "nav-link " + (!isActive ? "NavBar_unselected" : "NavBar_selected")
-                            }
+                            activeClassName="active" className="nav-link NavBar_btn"
                         >Login</NavLink>
                     </Box>
                 </Toolbar>
