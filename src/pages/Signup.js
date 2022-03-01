@@ -8,6 +8,8 @@ import Alert from '@mui/material/Alert';
 import isEmail from 'validator/lib/isEmail';
 import AuthService from '../services/AuthService';
 import MenuItem from '@mui/material/MenuItem';
+import { Typography } from '@mui/material';
+
 
 export default function Signup() {
 
@@ -135,8 +137,9 @@ export default function Signup() {
 
       <Container maxWidth="sm" align="center">
 
-        <br />
-        <br />
+        <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text">
+          Register
+        </Typography>
 
         <TextField
           error={emailError}

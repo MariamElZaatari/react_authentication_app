@@ -7,6 +7,7 @@ import Alert from '@mui/material/Alert';
 import ProfileService from '../services/ProfileService';
 import { UserContext } from '../context/UserContext'
 import MenuItem from '@mui/material/MenuItem';
+import { Typography } from '@mui/material';
 
 export default function Dashboard() {
 
@@ -72,20 +73,20 @@ export default function Dashboard() {
     ProfileService.Edit(user.id, user.access_token, firstName, lastName, gender, age, phone)
       .then(({ data }) => {
         console.log('data', data)
-          setUser({
-            id: user.id,
-            email: user.email,
-            first_name: firstName,
-            last_name: lastName,
-            gender: gender,
-            age: age,
-            phone: phone,
-            created_at: user.created_at,
-            access_token: user.access_token,
-            token_type: user.token_type,
-            expires_in: user.expires_in
-          })
-          setEditSuccessAlert(<Alert className="login_text_alert clr_green" severity="success">User Updated Successfully</Alert>)
+        setUser({
+          id: user.id,
+          email: user.email,
+          first_name: firstName,
+          last_name: lastName,
+          gender: gender,
+          age: age,
+          phone: phone,
+          created_at: user.created_at,
+          access_token: user.access_token,
+          token_type: user.token_type,
+          expires_in: user.expires_in
+        })
+        setEditSuccessAlert(<Alert className="login_text_alert clr_green" severity="success">User Updated Successfully</Alert>)
       })
       .catch(error => {
         setEditFailedAlert(<Alert className="login_text_alert clr_red" severity="error">Failed to Edit The User Info</Alert>)
@@ -107,12 +108,12 @@ export default function Dashboard() {
     setGender(gender);
   }
 
-  
+
   const ageHandler = (age) => {
     setAgeError(false);
     setAge(age);
   }
-  
+
   const phoneHandler = (phone) => {
     setPhoneError(false);
     setPhone(phone);
@@ -123,8 +124,9 @@ export default function Dashboard() {
 
       <Container maxWidth="sm" align="center">
 
-        <br />
-        <br />
+        <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text">
+          Edit Profile
+        </Typography>
 
         <TextField
           label="Email"
