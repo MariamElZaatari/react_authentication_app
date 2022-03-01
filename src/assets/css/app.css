@@ -38,7 +38,7 @@
 .card{
     border-radius: 21px !important;
     width: 21vw;
-    height: 41vh;
+    height: fit-content;
 }
 
 .button {
@@ -74,4 +74,11 @@
     letter-spacing: 0.21em !important;
     text-transform: capitalize;
     font-weight: 500 !important;
+    font-size: x-large !important;
+}
+.subtitle{
+    letter-spacing: 0.21em !important;
+    font-weight: 300 !important;
+    font-size: medium !important;
+    padding-top: 0 !important;
 }

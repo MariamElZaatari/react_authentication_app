@@ -112,6 +112,9 @@ export default function Login() {
             <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text title">
               Welcome Back
             </Typography>
+            <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text subtitle">
+              You have been missed.
+            </Typography>
             <TextField
               error={emailError}
               label="Email"

@@ -6,6 +6,9 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import isEmail from 'validator/lib/isEmail';
 import ContactService from '../services/ContactService';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
 
 export default function Contact() {
 
@@ -66,31 +69,53 @@ export default function Contact() {
   }
 
   return (
-    <div>
-      <Container maxWidth="lg" className="section" align="center">
-        <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text">
-          Contact Us
-        </Typography>
-        <TextField
-          error={emailError}
-          color="success"
-          label="Email"
-          onChange={(e) => emailHandler(e.target.value)}
-        /><br /><br />
-        <TextField
-          error={subjectError}
-          color="success"
-          label="Subject"
-          onChange={(e) => subjectHandler(e.target.value)}
-        /><br /><br />
-        <TextField
-          error={textError}
-          color="success"
-          label="Text"
-          onChange={(e) => textHandler(e.target.value)}
-        /><br /><br />
-        {PostMessageFailedAlert ? <>{PostMessageFailedAlert} <br /></> : null}
-        <Button className="clr_green" variant="contained" onClick={postMessageHandler}>Send</Button>
-      </Container></div>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: '84vh' }}
+    >
+
+      <Grid item xs={3}>
+
+        <Card className='card'>
+          <CardContent align="center" width="50vw">
+            <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text title">
+              How can we help?
+            </Typography>
+            <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text subtitle">
+              Send us a message.
+            </Typography>
+            <TextField
+              error={emailError}
+              color="success"
+              label="Email"
+              placeholder='Enter your email...'
+              onChange={(e) => emailHandler(e.target.value)}
+            /><br /><br />
+            <TextField
+              error={subjectError}
+              color="success"
+              label="Subject"
+              placeholder='Enter subject of message...'
+              onChange={(e) => subjectHandler(e.target.value)}
+            /><br /><br />
+            <TextField
+              error={textError}
+              color="success"
+              label="Message"
+              placeholder='Enter your message...'
+              onChange={(e) => textHandler(e.target.value)}
+            /><br /><br />
+            {PostMessageFailedAlert ? <>{PostMessageFailedAlert} <br /></> : null}
+
+            <Button className="button" onClick={postMessageHandler}>Send</Button>
+          </CardContent>
+        </Card>
+
+      </Grid>
+    </Grid>
   )
 }
