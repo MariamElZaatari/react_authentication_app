@@ -1,68 +1,125 @@
 /* NavBar_ */
 
+.logo {
+    letter-spacing: 0.41em !important;
+    font-size: x-large !important;
+}
+
 .not_active {
     text-decoration: none;
     color: white;
     text-transform: uppercase;
+    font-size: large;
     font-weight: 300;
+    letter-spacing: 0.21em;
 }
 
 .active {
     text-decoration: none;
     color: white;
     text-transform: uppercase;
+    font-size: large;
     font-weight: 900;
+    letter-spacing: 0.21em;
 }
 
-.logo {
-    letter-spacing: 0.21em !important;
+.not_active[name="login"] {
+    border: 1px solid white;
+    background-color: #5ACE7F;
+    border-radius: 3px;
+    padding: 10px 25px 10px 25px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-decoration: none;
+    font-size: large;
+    letter-spacing: 0.21em;
 }
+
+.not_active[name="login"]:hover {
+    border: 1px solid white;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 10px 25px 10px 25px;
+    color: #5ACE7F !important;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-decoration: none;
+    font-size: large;
+    letter-spacing: 0.21em;
+}
+
+.active[name="login"] {
+    border: 1px solid white;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 10px 25px 10px 25px;
+    color: #5ACE7F !important;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-decoration: none;
+    font-size: large;
+    letter-spacing: 0.21em;
+}
+
 @media only screen and (max-width: 820px) {
     .not_active {
         text-decoration: none;
-        color: #5ACE7F !important;;
+        color: #5ACE7F !important;
         text-transform: uppercase;
         font-size: small;
         font-weight: 300;
+        letter-spacing: 0.21em;
     }
-    
     .active {
         text-decoration: none;
         color: #5ACE7F !important;
         text-transform: uppercase;
         font-size: small;
         font-weight: 900;
+        letter-spacing: 0.21em;
     }
-
-    .NavBar_btn {
-        border: 1px solid white;
+    .not_active[name="login"] {
+        border: 1px solid #5ACE7F;
+        background-color: white;
+        border-radius: 3px;
+        padding: 5px 20px 5px 20px;
+        color: #5ACE7F;
+        text-transform: uppercase;
+        font-weight: 300;
+        text-decoration: none;
+        font-size: small;
+        letter-spacing: 0.21em;
+    }
+    .not_active[name="login"]:hover {
+        border: 1px solid #5ACE7F;
+        background-color: white;
+        border-radius: 3px;
+        padding: 5px 20px 5px 20px;
+        color: #5ACE7F;
+        text-transform: uppercase;
+        font-weight: 300;
+        text-decoration: none;
+        font-size: small;
+        letter-spacing: 0.21em;
+    }
+    .active[name="login"] {
+        border: 1px solid #5ACE7F;
         background-color: #5ACE7F;
         border-radius: 3px;
-        padding: 5px 20px 5px 20px ;
+        padding: 5px 20px 5px 20px;
         color: white !important;
         text-transform: uppercase;
         font-weight: 300;
-        font-size: small;
         text-decoration: none;
+        font-size: small;
+        letter-spacing: 0.21em;
     }
-  }
-.NavBar_btn {
-    border: 1px solid white;
-    background-color: #5ACE7F;
-    border-radius: 3px;
-    padding: 5px 20px 5px 20px ;
-    color: white !important;
-    text-transform: uppercase;
-    font-weight: 300;
-    text-decoration: none;
 }
 
-.NavBar_btn:hover {
-    border: 1px solid white;
-    background-color: white;
-    border-radius: 3px;
-    padding: 5px 20px 5px 20px ;
-    color: #5ACE7F !important;
-    font-weight: 500;
-    text-decoration: none;
+@media only screen and (max-width: 480px) {
+    .logo {
+        letter-spacing: 0.41em !important;
+        font-size: medium !important;
+    }
 }

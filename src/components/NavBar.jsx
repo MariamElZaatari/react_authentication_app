@@ -28,15 +28,15 @@ const NavBar = () => {
 
     return (
         <AppBar position="static" className="clr_green">
-            <Container maxWidth="xl">
+            <Container maxWidth="xxl">
                 <Toolbar disableGutters>
                     <Typography
-                        variant="h5"
                         noWrap
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                         fontWeight="900"
-                        letterSpacing="10"
+                        className="logo"
+                        align="left"
                     >
                         Butler & Chef
                     </Typography>
@@ -83,7 +83,7 @@ const NavBar = () => {
                             {
                                 user.id === 0 ?
                                     <MenuItem key="Login" onClick={handleCloseNavMenu}>
-                                        <NavLink to="/login" activeClassName="active" className="nav-link NavBar_btn">Login</NavLink>
+                                        <NavLink name="login" to="/login" activeClassName="active" className="nav-link not_active">Login</NavLink>
                                     </MenuItem>
                                     :
                                     <MenuItem key="Dashboard" onClick={handleCloseNavMenu}>
@@ -96,11 +96,12 @@ const NavBar = () => {
 
 
                     <Typography
-                        className="logo"
-                        variant="h6"
+                        fontWeight="900"
+                        align="left"
                         noWrap
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+                        className="logo"
                     >
                         Butler & Chef
                     </Typography>
@@ -118,9 +119,9 @@ const NavBar = () => {
                     <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
                         {
                             user.id === 0 ?
-                                <NavLink
+                                <NavLink name="login"
                                     to="/login"
-                                    activeClassName="active" className="nav-link NavBar_btn"
+                                    activeClassName="active" className="nav-link not_active"
                                 >Login</NavLink>
                                 :
                                 <NavLink
@@ -131,7 +132,7 @@ const NavBar = () => {
                     </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 };
 export default NavBar;
