@@ -83,7 +83,7 @@ const NavBar = () => {
                             {
                                 user.id === 0 ?
                                     <MenuItem key="Login" onClick={handleCloseNavMenu}>
-                                        <NavLink to="/login" activeClassName="NavBar_btn_active" className="nav-link NavBar_btn">Login</NavLink>
+                                        <NavLink to="/login" activeClassName="active" className="nav-link NavBar_btn">Login</NavLink>
                                     </MenuItem>
                                     :
                                     <MenuItem key="Dashboard" onClick={handleCloseNavMenu}>
@@ -120,7 +120,7 @@ const NavBar = () => {
                             user.id === 0 ?
                                 <NavLink
                                     to="/login"
-                                    activeClassName="NavBar_btn_active" className="nav-link NavBar_btn"
+                                    activeClassName="active" className="nav-link NavBar_btn"
                                 >Login</NavLink>
                                 :
                                 <NavLink
