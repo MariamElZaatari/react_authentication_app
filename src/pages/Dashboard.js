@@ -20,11 +20,13 @@ export default function Dashboard() {
   const [lastName, setLastName] = useState(user.last_name);
   const [gender, setGender] = useState(user.gender);
   const [age, setAge] = useState(user.age);
+  const [phone, setPhone] = useState(user.phone);
 
   const [firstNameError, setFirstNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
   const [genderError, setGenderError] = useState(false);
   const [ageError, setAgeError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
 
   const profileEditHandler = () => {
 
@@ -56,11 +58,18 @@ export default function Dashboard() {
       setAgeError(true);
     }
 
+    if (phone == 8) {
+      setPhoneError(false);
+    }
+    else {
+      setPhoneError(true);
+    }
+
     if (firstName.length <= 0 || lastName.length <= 0 || !(gender === "m" || gender === "f") || age < 0) {
       return false;
     }
 
-    ProfileService.Edit(user.id, user.access_token, firstName, lastName, gender, age)
+    ProfileService.Edit(user.id, user.access_token, firstName, lastName, gender, age, phone)
       .then(({ data }) => {
         console.log('data', data)
           setUser({
@@ -68,8 +77,9 @@ export default function Dashboard() {
             email: user.email,
             first_name: firstName,
             last_name: lastName,
-            age: age,
             gender: gender,
+            age: age,
+            phone: phone,
             created_at: user.created_at,
             access_token: user.access_token,
             token_type: user.token_type,
@@ -97,9 +107,15 @@ export default function Dashboard() {
     setGender(gender);
   }
 
+  
   const ageHandler = (age) => {
     setAgeError(false);
     setAge(age);
+  }
+  
+  const phoneHandler = (phone) => {
+    setPhoneError(false);
+    setPhone(phone);
   }
 
   return (
@@ -169,6 +185,15 @@ export default function Dashboard() {
         <br />
         <br />
 
+        <TextField
+          error={phoneError}
+          defaultValue={phone}
+          color="success"
+          label="Phone"
+          onChange={(e) => phoneHandler(e.target.value)}
+        />
+        <br />
+        <br />
         {editFailedAlert ? <>{editFailedAlert} <br /></> : null}
 
         <Button onClick={profileEditHandler} className="clr_green" variant="contained">Edit Profile</Button>
