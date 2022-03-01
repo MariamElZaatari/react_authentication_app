@@ -58,7 +58,7 @@ export default function Dashboard() {
       setAgeError(true);
     }
 
-    if (phone == 8) {
+    if (phone.length == 8) {
       setPhoneError(false);
     }
     else {

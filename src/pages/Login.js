@@ -32,14 +32,14 @@ export default function Login() {
       setEmailError(true);
     }
 
-    if (password.length > 7) {
+    if (password.length > 5) {
       setPasswordError(false);
     }
     else {
       setPasswordError(true);
     }
 
-    if (!isEmail(email) || !(password.length > 7)) {
+    if (!isEmail(email) || !(password.length > 5)) {
       return false;
     }
 
@@ -53,6 +53,7 @@ export default function Login() {
           last_name: data.user.last_name,
           age: data.user.age,
           gender: data.user.gender,
+          phone: data.user.phone,
           created_at: data.user.created_at,
           access_token: data.access_token,
           token_type: data.token_type,
