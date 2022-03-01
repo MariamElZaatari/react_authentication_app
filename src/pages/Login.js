@@ -9,6 +9,10 @@ import Alert from '@mui/material/Alert';
 import Container from '@mui/material/Container';
 import '../assets/css/login.css'
 import { Typography } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+
 
 export default function Login() {
 
@@ -82,45 +86,62 @@ export default function Login() {
     navigate('/signup');
   }
 
+  var cardStyle = {
+    display: 'block',
+    width: '30vw',
+    transitionDuration: '0.3s',
+    height: '45vw'
+  }
 
 
   return (
-    <Fragment>
 
-      <Container maxWidth="sm" align="center" className='section'>
-        <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text">
-          Login
-        </Typography>
-        <TextField
-          error={emailError}
-          label="Email"
-          color="success"
-          onChange={(e) => emailHandler(e.target.value)}
-        />
-        <br />
-        <br />
-        <TextField
-          error={passwordError}
-          type="password"
-          color="success"
-          label="Password"
-          onChange={(e) => passwordHandler(e.target.value)}
-        />
-        <br />
-        <br />
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: '84vh' }}
+    >
 
-        {LoginFailedAlert ? <>{LoginFailedAlert} <br /></> : null}
+      <Grid item xs={3}>
 
-        <Button onClick={loginHandler} className="clr_green" variant="contained">Login</Button>
+        <Card className='card'>
+          <CardContent align="center" width="50vw">
+            <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text title">
+              Welcome Back
+            </Typography>
+            <TextField
+              error={emailError}
+              label="Email"
+              color="success"
+              onChange={(e) => emailHandler(e.target.value)}
+            />
+            <br />
+            <br />
+            <TextField
+              error={passwordError}
+              type="password"
+              color="success"
+              label="Password"
+              onChange={(e) => passwordHandler(e.target.value)}
+            />
+            <br />
+            <br />
 
-        <Typography className="clr_brown_text" p={2} fontWeight={300} id='login_no_account' onClick={() => signupHandler()}>
-          Don't Have an Account?
-        </Typography>
+            {LoginFailedAlert ? <>{LoginFailedAlert} <br /></> : null}
 
+            <Button onClick={loginHandler} className="button">Login</Button>
 
-      </Container>
+            <Typography className="clr_brown_text" p={2} fontWeight={300} id='login_no_account' onClick={() => signupHandler()}>
+              Don't Have an Account?
+            </Typography>
+          </CardContent>
+        </Card>
 
-    </Fragment>
+      </Grid>
+    </Grid>
 
   )
 }

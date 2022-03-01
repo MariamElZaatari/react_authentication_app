@@ -12,5 +12,10 @@
 
 #login_no_account:hover {
     cursor: pointer;
-    color: blue;
+    color: #5ACE7F !important;
+    transform: scale(1.1);
+}
+
+#login_no_account {
+    transition: all .2s ease-in-out;
 }
