@@ -10,7 +10,7 @@ export const UserProvider = ({children}) => {
         first_name: "unknown",
         last_name: "unknown",
         age: 0,
-        gender: "F",
+        gender: "f",
         created_at: "unknown",
         access_token: "unknown",
         token_type: "unknown",

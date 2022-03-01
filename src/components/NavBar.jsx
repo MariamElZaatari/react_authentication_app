@@ -78,7 +78,7 @@ const NavBar = () => {
                                 </MenuItem>
                             ))}
                             <MenuItem key="Login" onClick={handleCloseNavMenu}>
-                                <NavLink to="/login" activeClassName="active" className="nav-link not_active">Login</NavLink>
+                                <NavLink to="/login" activeClassName="NavBar_btn_active" className="nav-link NavBar_btn">Login</NavLink>
                             </MenuItem>
                         </Menu>
                     </Box>
@@ -106,7 +106,7 @@ const NavBar = () => {
                     <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
                         <NavLink
                             to="/login"
-                            activeClassName="active" className="nav-link NavBar_btn"
+                            activeClassName="NavBar_btn_active" className="nav-link NavBar_btn"
                         >Login</NavLink>
                     </Box>
                 </Toolbar>

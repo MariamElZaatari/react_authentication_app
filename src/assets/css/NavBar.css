@@ -19,6 +19,16 @@
 }
 
 .NavBar_btn {
+    border: 1px solid white;
+    background-color: #5ACE7F;
+    border-radius: 3px;
+    padding: 5px 20px 5px 20px ;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.NavBar_btn:hover {
     border-color: #ffffff;
     background-color: white;
     border-radius: 3px;
@@ -28,7 +38,7 @@
     text-decoration: none;
 }
 
-.NavBar_btn:hover {
+.NavBar_btn_active{
     border-color: #ffffff;
     background-color: white;
     border-radius: 3px;
