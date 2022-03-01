@@ -11,7 +11,7 @@ export default function MediaCard(props) {
     const image=props.image;
 
     return (
-      <Card sx={{ maxWidth: 345 }}>
+      <Card>
         <CardMedia
           component="img"
           height="140"
