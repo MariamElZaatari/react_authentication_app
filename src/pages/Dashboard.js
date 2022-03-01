@@ -105,7 +105,7 @@ export default function Dashboard() {
   return (
     <Fragment>
 
-      <Container maxWidth="sm" className='login_text_center'>
+      <Container maxWidth="sm" align="center">
 
         <br />
         <br />

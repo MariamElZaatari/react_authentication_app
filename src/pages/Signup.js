@@ -133,7 +133,7 @@ export default function Signup() {
   return (
     <Fragment>
 
-      <Container maxWidth="sm" className='login_text_center'>
+      <Container maxWidth="sm" align="center">
 
         <br />
         <br />

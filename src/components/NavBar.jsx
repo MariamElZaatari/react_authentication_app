@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,10 +10,12 @@ import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import { NavLink } from "react-router-dom";
 import '../assets/css/NavBar.css';
+import { UserContext } from '../context/UserContext';
 
 const pages = ['Home', 'About', 'Contact'];
 
 const NavBar = () => {
+    const { user, setUser } = useContext(UserContext);
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
@@ -77,9 +79,18 @@ const NavBar = () => {
                                     >{page}</NavLink>
                                 </MenuItem>
                             ))}
-                            <MenuItem key="Login" onClick={handleCloseNavMenu}>
-                                <NavLink to="/login" activeClassName="NavBar_btn_active" className="nav-link NavBar_btn">Login</NavLink>
-                            </MenuItem>
+
+                            {
+                                user.id === 0 ?
+                                    <MenuItem key="Login" onClick={handleCloseNavMenu}>
+                                        <NavLink to="/login" activeClassName="NavBar_btn_active" className="nav-link NavBar_btn">Login</NavLink>
+                                    </MenuItem>
+                                    :
+                                    <MenuItem key="Dashboard" onClick={handleCloseNavMenu}>
+                                        <NavLink to="/dashboard" activeClassName="active" className="nav-link not_active">Dashboard</NavLink>
+                                    </MenuItem>
+                            }
+
                         </Menu>
                     </Box>
 
@@ -97,6 +108,7 @@ const NavBar = () => {
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'space-evenly' }}>
                         {pages.map((page) => (
                             <NavLink
+                                key={page}
                                 to={"/" + page}
                                 activeClassName="active" className="nav-link not_active"
                             >{page}</NavLink>
@@ -104,10 +116,18 @@ const NavBar = () => {
                     </Box>
 
                     <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-                        <NavLink
-                            to="/login"
-                            activeClassName="NavBar_btn_active" className="nav-link NavBar_btn"
-                        >Login</NavLink>
+                        {
+                            user.id === 0 ?
+                                <NavLink
+                                    to="/login"
+                                    activeClassName="NavBar_btn_active" className="nav-link NavBar_btn"
+                                >Login</NavLink>
+                                :
+                                <NavLink
+                                    to="/dashboard"
+                                    activeClassName="active" className="nav-link not_active"
+                                >Dashboard</NavLink>
+                        }
                     </Box>
                 </Toolbar>
             </Container>
