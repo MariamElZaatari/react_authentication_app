@@ -215,7 +215,7 @@ export default function Signup() {
 
         {LoginFailedAlert ? <>{LoginFailedAlert} <br /></> : null}
 
-        <Button onClick={registerHandler} className="clr_green" variant="contained">Register</Button>
+        <Button onClick={registerHandler} className="clr_green section" variant="contained">Register</Button>
 
 
 

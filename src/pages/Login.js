@@ -8,6 +8,7 @@ import isEmail from 'validator/lib/isEmail';
 import Alert from '@mui/material/Alert';
 import Container from '@mui/material/Container';
 import '../assets/css/login.css'
+import { Typography } from '@mui/material';
 
 export default function Login() {
 
@@ -81,7 +82,7 @@ export default function Login() {
     navigate('/signup');
   }
 
-  
+
 
   return (
     <Fragment>
@@ -111,7 +112,9 @@ export default function Login() {
 
         <Button onClick={loginHandler} className="clr_green" variant="contained">Login</Button>
 
-        <p id='login_no_account' onClick={() => signupHandler()}>don't have an account?</p>
+        <Typography className="clr_brown_text" p={2} fontWeight={300} id='login_no_account' onClick={() => signupHandler()}>
+          Don't Have an Account?
+        </Typography>
 
 
       </Container>
