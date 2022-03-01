@@ -1,13 +1,19 @@
 import React, { Fragment, useState } from 'react'
-import '../assets/css/dashboard.css'
+import '../assets/css/signup.css'
+import { useNavigate } from "react-router-dom";
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
 import isEmail from 'validator/lib/isEmail';
 import AuthService from '../services/AuthService';
 import MenuItem from '@mui/material/MenuItem';
 
 export default function Signup() {
+
+  const navigate = useNavigate();
+
+  const [LoginFailedAlert, setLoginFailedAlert] = useState(null);
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -80,7 +86,13 @@ export default function Signup() {
       return false;
     }
 
-
+    AuthService.Register(email, password, passwordConfirmation, firstName, lastName, gender, age)
+      .then(({ data }) => {
+        navigate('/login');
+      })
+      .catch(error => {
+        setLoginFailedAlert(<Alert className="login_text_alert clr_red" severity="error">Couldn't Create A User With This Info</Alert>)
+      })
   }
 
   const emailHandler = (email) => {
@@ -121,7 +133,7 @@ export default function Signup() {
   return (
     <Fragment>
 
-      <Container maxWidth="sm" className='section' align="center">
+      <Container maxWidth="sm" className='login_text_center'>
 
         <br />
         <br />
@@ -201,8 +213,15 @@ export default function Signup() {
         <br />
         <br />
 
+        {LoginFailedAlert ? <>{LoginFailedAlert} <br /></> : null}
+
         <Button onClick={registerHandler} className="clr_green" variant="contained">Register</Button>
+
+
+
       </Container>
+
+
 
     </Fragment>
   )
