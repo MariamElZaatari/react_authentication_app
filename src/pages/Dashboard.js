@@ -11,7 +11,7 @@ import { Typography } from '@mui/material';
 
 export default function Dashboard() {
 
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUserHandler } = useContext(UserContext);
 
   const [editFailedAlert, setEditFailedAlert] = useState(null);
   const [editSuccessAlert, setEditSuccessAlert] = useState(null);
@@ -72,8 +72,7 @@ export default function Dashboard() {
 
     ProfileService.Edit(user.id, user.access_token, firstName, lastName, gender, age, phone)
       .then(({ data }) => {
-        console.log('data', data)
-        setUser({
+        setUserHandler({
           id: user.id,
           email: user.email,
           first_name: firstName,
@@ -84,7 +83,8 @@ export default function Dashboard() {
           created_at: user.created_at,
           access_token: user.access_token,
           token_type: user.token_type,
-          expires_in: user.expires_in
+          expires_in: user.expires_in,
+          isAuth: user.isAuth
         })
         setEditSuccessAlert(<Alert className="login_text_alert clr_green" severity="success">User Updated Successfully</Alert>)
       })
