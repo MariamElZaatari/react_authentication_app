@@ -82,3 +82,14 @@
     font-size: medium !important;
     padding-top: 0 !important;
 }
+.alert {
+    width: 221px !important;
+    margin: auto;
+    letter-spacing: 0.04em !important;
+    justify-content: center !important;
+    color: #BF212F !important;
+}
+
+.alert svg {
+    color: #BF212F !important;
+}

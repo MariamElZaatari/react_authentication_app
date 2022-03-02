@@ -30,46 +30,54 @@ export default function Login() {
 
   const loginHandler = () => {
 
-    if (isEmail(email)) {
-      setEmailError(false);
-    }
-    else {
-      setEmailError(true);
-    }
+    setLoginFailedAlert(null)
 
-    if (password.length > 5) {
-      setPasswordError(false);
-    }
-    else {
-      setPasswordError(true);
-    }
+    if (email == undefined || password == undefined || email == "" || password == "") {
+      setLoginFailedAlert(<Alert className="alert" severity="error">All Fields are Required.</Alert>)
+    } else {
 
-    if (!isEmail(email) || !(password.length > 5)) {
-      return false;
-    }
+      if (isEmail(email)) {
+        setEmailError(false);
+      }
+      else {
+        setEmailError(true);
+      }
 
-    AuthService.Login(email, password)
-      .then(({ data }) => {
+      if (password.length > 5) {
+        setPasswordError(false);
+      }
+      else {
+        setPasswordError(true);
+      }
 
-        setUser({
-          id: data.user.id,
-          email: data.user.email,
-          first_name: data.user.first_name,
-          last_name: data.user.last_name,
-          age: data.user.age,
-          gender: data.user.gender,
-          phone: data.user.phone,
-          created_at: data.user.created_at,
-          access_token: data.access_token,
-          token_type: data.token_type,
-          expires_in: data.expires_in
+      if (!isEmail(email) || !(password.length > 5)) {
+        return false;
+      }
+
+      AuthService.Login(email, password)
+        .then(({ data }) => {
+
+          setUser({
+            id: data.user.id,
+            email: data.user.email,
+            first_name: data.user.first_name,
+            last_name: data.user.last_name,
+            age: data.user.age,
+            gender: data.user.gender,
+            phone: data.user.phone,
+            created_at: data.user.created_at,
+            access_token: data.access_token,
+            token_type: data.token_type,
+            expires_in: data.expires_in
+          })
+
+          navigate('/home');
         })
+        .catch(error => {
+          setLoginFailedAlert(<Alert className="alert" severity="error">Wrong Email or Password</Alert>)
+        })
+    }
 
-        navigate('/home');
-      })
-      .catch(error => {
-        setLoginFailedAlert(<Alert className="login_text_alert clr_red" severity="error">Email / Password Wrong</Alert>)
-      })
   }
 
   const emailHandler = (email) => {
@@ -119,6 +127,8 @@ export default function Login() {
               error={emailError}
               label="Email"
               color="success"
+              defaultValue=""
+              helperText={emailError == true ? "Enter a valid email." : ''}
               onChange={(e) => emailHandler(e.target.value)}
             />
             <br />
@@ -128,6 +138,8 @@ export default function Login() {
               type="password"
               color="success"
               label="Password"
+              defaultValue=""
+              helperText={passwordError == true ? "Password should be atleast 6 characters long." : ''}
               onChange={(e) => passwordHandler(e.target.value)}
             />
             <br />
