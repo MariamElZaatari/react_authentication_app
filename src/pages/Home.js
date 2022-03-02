@@ -33,14 +33,19 @@ export default function Home() {
   return (
     <div>
       <Container maxWidth="lg" className="section">
-      <ImageSlider slides={SliderData}/>
+        <ImageSlider slides={SliderData} />
       </Container>
       <Container maxWidth="lg" className="section">
 
-        <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text">
+        <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="header clr_brown_text">
           Our Services
         </Typography>
-        <Grid container rowSpacing={2} spacing={2} justifyContent="center">
+        <Grid container
+          spacing={3}
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+          style={{ minHeight: '41vh' }}>
 
           <Grid item xs={12} sm={6} md={3}>
             <Service image={RecipeImage} name="Share Your Recipes" desc="Share your recipes with your friends, and wait for the feedback." />

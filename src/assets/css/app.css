@@ -55,6 +55,15 @@
     margin-bottom: 41px !important;
 }
 
+.card[type="service"] {
+    border-radius: 21px !important;
+    width: fit-content;
+    height: 36vh;
+    margin-top: 41px !important;
+    margin-bottom: 41px !important;
+}
+
+
 .button {
     border: 1px solid #5ACE7F !important;
     background-color: white;
@@ -121,4 +130,36 @@
 
 .success svg {
     color: #4BB543 !important;
+}
+.header {
+    letter-spacing: 0.21em !important;
+    text-transform: capitalize;
+    font-weight: 500 !important;
+    font-size: 38px !important;
+}
+@media only screen and (max-width: 820px) {
+    .card[type="service"] {
+        border-radius: 21px !important;
+        width: fit-content;
+        height: 24vh;
+        margin-top: 12px !important;
+        margin-bottom: 12px !important;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .header {
+        letter-spacing: 0.21em !important;
+        text-transform: capitalize;
+        font-weight: 500 !important;
+        font-size: x-large !important;
+    }
+    .card[type="service"] {
+        border-radius: 21px !important;
+        width: fit-content;
+        height: 41vh;
+        margin-top: 12px !important;
+        margin-bottom: 12px !important;
+        margin-left: 21px !important;
+        margin-right: 21px !important;
+    }
 }

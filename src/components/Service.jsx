@@ -11,7 +11,7 @@ export default function MediaCard(props) {
     const image=props.image;
 
     return (
-      <Card>
+      <Card className='card' type="service">
         <CardMedia
           component="img"
           height="140"
