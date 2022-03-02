@@ -8,7 +8,7 @@ const Login = async (email, password) => {
     })
 }
 
-const Register = async (email, password, password_confirmation, first_name, last_name, gender, age) => {
+const Register = async (email, password, password_confirmation, first_name, last_name, gender, age, phone) => {
     return await axios.post("http://127.0.0.1:8000/api/auth/register", 
     {
         email: email,
@@ -18,6 +18,7 @@ const Register = async (email, password, password_confirmation, first_name, last
         last_name: last_name,
         gender: gender,
         age: age,
+        phone:phone
     })
 }
 
