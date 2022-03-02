@@ -18,7 +18,7 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  const { user, setUser } = useContext(UserContext);
+  const { setUserHandler } =useContext(UserContext);
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -57,21 +57,23 @@ export default function Login() {
       AuthService.Login(email, password)
         .then(({ data }) => {
 
-          setUser({
-            id: data.user.id,
-            email: data.user.email,
-            first_name: data.user.first_name,
-            last_name: data.user.last_name,
-            age: data.user.age,
-            gender: data.user.gender,
-            phone: data.user.phone,
-            created_at: data.user.created_at,
-            access_token: data.access_token,
-            token_type: data.token_type,
-            expires_in: data.expires_in
-          })
+          setUserHandler({
+          id: data.user.id,
+          email: data.user.email,
+          first_name: data.user.first_name,
+          last_name: data.user.last_name,
+          age: data.user.age,
+          gender: data.user.gender,
+          phone: data.user.phone,
+          created_at: data.user.created_at,
+          access_token: data.access_token,
+          token_type: data.token_type,
+          expires_in: data.expires_in,
+          isAuth: true
+        })
+        
+        navigate('/home');
 
-          navigate('/home');
         })
         .catch(error => {
           setLoginFailedAlert(<Alert className="alert" severity="error">Wrong Email or Password</Alert>)
