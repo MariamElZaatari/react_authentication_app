@@ -20,8 +20,8 @@ export default function Login() {
 
   const { setUserHandler } =useContext(UserContext);
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -31,10 +31,6 @@ export default function Login() {
   const loginHandler = () => {
 
     setLoginFailedAlert(null)
-
-    if (email == undefined || password == undefined || email == "" || password == "") {
-      setLoginFailedAlert(<Alert className="alert" severity="error">All Fields are Required.</Alert>)
-    } else {
 
       if (isEmail(email)) {
         setEmailError(false);
@@ -50,7 +46,7 @@ export default function Login() {
         setPasswordError(true);
       }
 
-      if (!isEmail(email) || !(password.length > 5)) {
+      if (!isEmail(email) || password.length < 5) {
         return false;
       }
 
@@ -78,7 +74,7 @@ export default function Login() {
         .catch(error => {
           setLoginFailedAlert(<Alert className="alert" severity="error">Wrong Email or Password</Alert>)
         })
-    }
+    
 
   }
 
@@ -141,7 +137,7 @@ export default function Login() {
               color="success"
               label="Password"
               defaultValue=""
-              helperText={passwordError == true ? "Password should be atleast 6 characters long." : ''}
+              helperText={passwordError == true ? "Enter a valid password." : ''}
               onChange={(e) => passwordHandler(e.target.value)}
             />
             <br />

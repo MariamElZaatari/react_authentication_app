@@ -1,41 +1,53 @@
-.clr_green{
+.clr_green {
     background-color: #5ACE7F !important;
 }
-.clr_red{
+
+.clr_red {
     background-color: #BF212F !important;
 }
-.clr_gray{
+
+.clr_gray {
     background-color: #C8CBD2 !important;
 }
-.clr_placeholder{
+
+.clr_placeholder {
     background-color: #C6CACC !important;
 }
-.clr_brown{
+
+.clr_brown {
     background-color: #6F5745 !important;
 }
-.clr_green_text{
+
+.clr_green_text {
     color: #5ACE7F !important;
 }
-.clr_red_text{
+
+.clr_red_text {
     color: #BF212F !important;
 }
-.clr_gray_text{
+
+.clr_gray_text {
     color: #C8CBD2 !important;
 }
-.clr_placeholder_text{
+
+.clr_placeholder_text {
     color: #C6CACC !important;
 }
-.clr_brown_text{
+
+.clr_brown_text {
     color: #6F5745 !important;
 }
-.clr_white_text{
+
+.clr_white_text {
     color: #FFFFFF !important;
 }
-.section{
+
+.section {
     margin-top: 70px;
     margin-bottom: 21px !important;
 }
-.card{
+
+.card {
     border-radius: 21px !important;
     width: 21vw;
     height: fit-content;
@@ -70,18 +82,21 @@
     font-weight: 300 !important;
     letter-spacing: 0.21em !important;
 }
-.title{
+
+.title {
     letter-spacing: 0.21em !important;
     text-transform: capitalize;
     font-weight: 500 !important;
     font-size: x-large !important;
 }
-.subtitle{
+
+.subtitle {
     letter-spacing: 0.21em !important;
     font-weight: 300 !important;
     font-size: medium !important;
     padding-top: 0 !important;
 }
+
 .alert {
     width: 221px !important;
     margin: auto;
@@ -92,4 +107,16 @@
 
 .alert svg {
     color: #BF212F !important;
+}
+
+.success {
+    width: 221px !important;
+    margin: auto;
+    letter-spacing: 0.04em !important;
+    justify-content: center !important;
+    color: #4BB543 !important;
+}
+
+.success svg {
+    color: #4BB543 !important;
 }

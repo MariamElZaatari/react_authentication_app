@@ -12,31 +12,33 @@ import Grid from '@mui/material/Grid';
 
 export default function Contact() {
 
-  const [PostMessageFailedAlert, setPostMessageFailedAlert] = useState(null);
-
-  const [email, setEmail] = useState();
+  
+  const [PostMessageAlert, setPostMessageAlert] = useState(null);
+  
+  const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
   const emailHandler = (email) => {
     setEmailError(false);
     setEmail(email);
   }
-
-  const [subject, setSubject] = useState();
+  
+  const [subject, setSubject] = useState("");
   const [subjectError, setSubjectError] = useState(false);
   const subjectHandler = (subject) => {
     setSubjectError(false);
     setSubject(subject);
   }
-
-  const [text, setText] = useState();
+  
+  const [text, setText] = useState("");
   const [textError, setTextError] = useState(false);
   const textHandler = (subject) => {
     setTextError(false);
     setText(subject);
   }
-
+  
   const postMessageHandler = () => {
-
+    setPostMessageAlert(null)
+    
     if (isEmail(email)) {
       setEmailError(false);
     }
@@ -51,20 +53,23 @@ export default function Contact() {
       setSubjectError(true);
     }
 
-    if (text.length > 3) {
+    if (text.length > 0) {
       setTextError(false);
     }
     else {
       setTextError(true);
     }
 
+    if (!isEmail(email) || subject.length == 0 || text.length<3) {
+      return false;
+    }
 
     ContactService.PostMessage(email, subject, text)
-      .then(({ data }) => {
-        //Add Message Sent Successfully
+      .then(() => {
+        setPostMessageAlert(<Alert className="success" severity="success">Message Sent Successfully</Alert>)
       })
       .catch(error => {
-        setPostMessageFailedAlert(<Alert className="login_text_alert clr_red" severity="error">All Fields are Required</Alert>)
+        setPostMessageAlert(<Alert className="alert" severity="error">Error Sending Message</Alert>)
       })
   }
 
@@ -93,6 +98,7 @@ export default function Contact() {
               color="success"
               label="Email"
               placeholder='Enter your email...'
+              helperText={emailError == true ? "Enter a valid email." : ''}
               onChange={(e) => emailHandler(e.target.value)}
             /><br /><br />
             <TextField
@@ -100,16 +106,20 @@ export default function Contact() {
               color="success"
               label="Subject"
               placeholder='Enter subject of message...'
+              helperText={subjectError == true ? "Subject cannot be empty." : ''}
               onChange={(e) => subjectHandler(e.target.value)}
             /><br /><br />
             <TextField
               error={textError}
               color="success"
               label="Message"
+              multiline
+              rows={4}
               placeholder='Enter your message...'
+              helperText={textError == true ? "Message cannot be empty." : ''}
               onChange={(e) => textHandler(e.target.value)}
             /><br /><br />
-            {PostMessageFailedAlert ? <>{PostMessageFailedAlert} <br /></> : null}
+            {PostMessageAlert ? <>{PostMessageAlert} <br /></> : null}
 
             <Button className="button" onClick={postMessageHandler}>Send</Button>
           </CardContent>
