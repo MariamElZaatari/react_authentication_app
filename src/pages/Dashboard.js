@@ -8,6 +8,9 @@ import ProfileService from '../services/ProfileService';
 import { UserContext } from '../context/UserContext'
 import MenuItem from '@mui/material/MenuItem';
 import { Typography } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
 
 export default function Dashboard() {
 
@@ -31,14 +34,14 @@ export default function Dashboard() {
 
   const profileEditHandler = () => {
 
-    if (firstName.length > 0) {
+    if (firstName.length > 0 && /^[a-zA-Z]+$/.test(firstName)) {
       setFirstNameError(false);
     }
     else {
       setFirstNameError(true);
     }
 
-    if (lastName.length > 0) {
+    if (lastName.length > 0 && /^[a-zA-Z]+$/.test(lastName)) {
       setLastNameError(false);
     }
     else {
@@ -52,21 +55,21 @@ export default function Dashboard() {
       setGenderError(true);
     }
 
-    if (age > 0) {
+    if (age > 11 && /^[0-9]+$/.test(age)) {
       setAgeError(false);
     }
     else {
       setAgeError(true);
     }
 
-    if (phone.length == 8) {
+    if (phone.length == 8 && /^[0-9]+$/.test(phone)) {
       setPhoneError(false);
     }
     else {
       setPhoneError(true);
     }
 
-    if (firstName.length <= 0 || lastName.length <= 0 || !(gender === "m" || gender === "f") || age < 0) {
+    if (firstName.length <= 0 || !(/^[a-zA-Z]+$/.test(firstName)) || lastName.length <= 0 || !(/^[a-zA-Z]+$/.test(lastName)) ||!(gender === "m" || gender === "f") || age < 12 || !(/^[0-9]+$/.test(age)) || phone.length !== 8 || !(/^[0-9]+$/.test(phone))) {
       return false;
     }
 
@@ -86,10 +89,10 @@ export default function Dashboard() {
           expires_in: user.expires_in,
           isAuth: user.isAuth
         })
-        setEditSuccessAlert(<Alert className="login_text_alert clr_green" severity="success">User Updated Successfully</Alert>)
+        setEditFailedAlert(<Alert className="success" severity="success">User Updated Successfully</Alert>)
       })
       .catch(error => {
-        setEditFailedAlert(<Alert className="login_text_alert clr_red" severity="error">Failed to Edit The User Info</Alert>)
+        setEditFailedAlert(<Alert className="alert" severity="error">Failed to Edit Account Info</Alert>)
       })
   }
 
@@ -120,10 +123,19 @@ export default function Dashboard() {
   }
 
   return (
-    <Fragment>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: '92vh' }}
+    >
 
-      <Container maxWidth="sm" align="center">
+      <Grid item xs={3}>
 
+        <Card className='card'>
+          <CardContent align="center" width="50vw">
         <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text">
           Edit Profile
         </Typography>
@@ -143,6 +155,7 @@ export default function Dashboard() {
           color="success"
           defaultValue={firstName}
           label="First Name"
+          helperText={firstNameError == true ? "Enter a valid first name." : ''}
           onChange={(e) => firstNameHandler(e.target.value)}
         />
         <br />
@@ -153,6 +166,7 @@ export default function Dashboard() {
           defaultValue={lastName}
           color="success"
           label="Last Name"
+          helperText={lastNameError == true ? "Enter a valid last name." : ''}
           onChange={(e) => lastNameHandler(e.target.value)}
         />
         <br />
@@ -165,6 +179,7 @@ export default function Dashboard() {
           color="success"
           label="Select"
           value={gender}
+          helperText={genderError == true ? "Gender cannot be empty." : ''}
           onChange={(e) => genderHandler(e.target.value)}
         >
           <MenuItem key="m" value="m">
@@ -182,6 +197,7 @@ export default function Dashboard() {
           defaultValue={age}
           color="success"
           label="Age"
+          helperText={ageError == true ? "Enter a valid age." : ''}
           onChange={(e) => ageHandler(e.target.value)}
         />
         <br />
@@ -192,6 +208,7 @@ export default function Dashboard() {
           defaultValue={phone}
           color="success"
           label="Phone"
+          helperText={phoneError == true ? "Enter a valid phone number." : ''}
           onChange={(e) => phoneHandler(e.target.value)}
         />
         <br />
@@ -205,10 +222,10 @@ export default function Dashboard() {
 
         {editSuccessAlert ? <>{editSuccessAlert} <br /></> : null}
 
-      </Container>
+        </CardContent>
+        </Card>
 
-
-
-    </Fragment>
+      </Grid>
+    </Grid>
   )
 }
