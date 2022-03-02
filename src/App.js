@@ -12,6 +12,7 @@ import NavBar from "./components/NavBar";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import './assets/css/app.css';
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 
 export default function App() {
@@ -25,7 +26,9 @@ export default function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path='/dashboard' element={<Dashboard />} />
+        </Route>
         <Route path='*' element={<Home />} />
       </Routes>
     </Router>
