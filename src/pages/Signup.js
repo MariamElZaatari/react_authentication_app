@@ -101,7 +101,6 @@ export default function Signup() {
     }
 
     if (!isEmail(email) || password.length < 6 || passwordConfirmation !== password || firstName.length <= 0 || !(/^[a-zA-Z]+$/.test(firstName)) || lastName.length <= 0 || !(/^[a-zA-Z]+$/.test(lastName)) ||!(gender === "m" || gender === "f") || age < 12 || !(/^[0-9]+$/.test(age)) || phone.length !== 8 || !(/^[0-9]+$/.test(phone))) {
-      console.log("F")
       return false;
     }
 

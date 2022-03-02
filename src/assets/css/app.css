@@ -49,9 +49,10 @@
 
 .card {
     border-radius: 21px !important;
-    width: 21vw;
+    width: fit-content;
     height: fit-content;
     margin-top: 41px !important;
+    margin-bottom: 41px !important;
 }
 
 .button {
