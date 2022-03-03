@@ -3,6 +3,7 @@ import Image2 from "../assets/images/Image2.gif";
 import Image3 from "../assets/images/recipe.jpg";
 import Image4 from "../assets/images/search.jpg";
 
+// Provide Images Array for Slider
 export const SliderData = [
   {
     image:

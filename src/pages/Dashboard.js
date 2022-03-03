@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useContext } from 'react'
 import '../assets/css/signup.css'
-import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
@@ -14,26 +13,61 @@ import Grid from '@mui/material/Grid';
 
 export default function Dashboard() {
 
+  // Get User and setUserHandler from user context to set input default value and update user info
   const { user, setUserHandler } = useContext(UserContext);
 
-  const [editFailedAlert, setEditFailedAlert] = useState(null);
-  const [editSuccessAlert, setEditSuccessAlert] = useState(null);
+  // Create useState alert that returns alert Stateful Value and set alert Function to update it
+  const [editUserAlert, setEditUserAlert] = useState(null);
 
   const [email, setEmail] = useState(user.email);
+
+  // Create First Name useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
   const [firstName, setFirstName] = useState(user.first_name);
-  const [lastName, setLastName] = useState(user.last_name);
-  const [gender, setGender] = useState(user.gender);
-  const [age, setAge] = useState(user.age);
-  const [phone, setPhone] = useState(user.phone);
-
   const [firstNameError, setFirstNameError] = useState(false);
-  const [lastNameError, setLastNameError] = useState(false);
-  const [genderError, setGenderError] = useState(false);
-  const [ageError, setAgeError] = useState(false);
-  const [phoneError, setPhoneError] = useState(false);
+  const firstNameHandler = (firstName) => {
+    setFirstNameError(false);
+    setFirstName(firstName);
+  }
 
+  // Create Last Name useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
+  const [lastName, setLastName] = useState(user.last_name);
+  const [lastNameError, setLastNameError] = useState(false);
+  const lastNameHandler = (lastName) => {
+    setLastNameError(false);
+    setLastName(lastName);
+  }
+
+  // Create Gender useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
+  const [gender, setGender] = useState(user.gender);
+  const [genderError, setGenderError] = useState(false);
+  const genderHandler = (gender) => {
+    setGenderError(false);
+    setGender(gender);
+  }
+
+  // Create Age useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
+  const [age, setAge] = useState(user.age);
+  const [ageError, setAgeError] = useState(false);
+  const ageHandler = (age) => {
+    setAgeError(false);
+    setAge(age);
+  }
+
+  // Create Phone useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
+  const [phone, setPhone] = useState(user.phone);
+  const [phoneError, setPhoneError] = useState(false);
+  const phoneHandler = (phone) => {
+    setPhoneError(false);
+    setPhone(phone);
+  }
+
+  // Profile Edit Handler Function: Resets Alert, Validates Input, and Posting data using axios
   const profileEditHandler = () => {
 
+    // Reset Alert
+    setEditUserAlert(null)
+
+    // Validate Input for Error
     if (firstName.length > 0 && /^[a-zA-Z]+$/.test(firstName)) {
       setFirstNameError(false);
     }
@@ -69,12 +103,15 @@ export default function Dashboard() {
       setPhoneError(true);
     }
 
-    if (firstName.length <= 0 || !(/^[a-zA-Z]+$/.test(firstName)) || lastName.length <= 0 || !(/^[a-zA-Z]+$/.test(lastName)) ||!(gender === "m" || gender === "f") || age < 12 || !(/^[0-9]+$/.test(age)) || phone.length !== 8 || !(/^[0-9]+$/.test(phone))) {
+    // Validate Input to Abort Axios
+    if (firstName.length <= 0 || !(/^[a-zA-Z]+$/.test(firstName)) || lastName.length <= 0 || !(/^[a-zA-Z]+$/.test(lastName)) || !(gender === "m" || gender === "f") || age < 12 || !(/^[0-9]+$/.test(age)) || phone.length !== 8 || !(/^[0-9]+$/.test(phone))) {
       return false;
     }
 
+    // Axios
     ProfileService.Edit(user.id, user.access_token, firstName, lastName, gender, age, phone)
       .then(({ data }) => {
+
         setUserHandler({
           id: user.id,
           email: user.email,
@@ -89,40 +126,16 @@ export default function Dashboard() {
           expires_in: user.expires_in,
           isAuth: user.isAuth
         })
-        setEditFailedAlert(<Alert className="success" severity="success">User Updated Successfully</Alert>)
+        setEditUserAlert(<Alert className="success" severity="success">User Updated Successfully</Alert>)
+        
       })
       .catch(error => {
-        setEditFailedAlert(<Alert className="alert" severity="error">Failed to Edit Account Info</Alert>)
+        setEditUserAlert(<Alert className="alert" severity="error">Failed to Edit Account Info</Alert>)
       })
-  }
-
-  const firstNameHandler = (firstName) => {
-    setFirstNameError(false);
-    setFirstName(firstName);
-  }
-
-  const lastNameHandler = (lastName) => {
-    setLastNameError(false);
-    setLastName(lastName);
-  }
-
-  const genderHandler = (gender) => {
-    setGenderError(false);
-    setGender(gender);
-  }
-
-
-  const ageHandler = (age) => {
-    setAgeError(false);
-    setAge(age);
-  }
-
-  const phoneHandler = (phone) => {
-    setPhoneError(false);
-    setPhone(phone);
   }
 
   return (
+    // Grid with One Grid Item
     <Grid
       container
       spacing={0}
@@ -136,93 +149,99 @@ export default function Dashboard() {
 
         <Card className='card'>
           <CardContent align="center" width="50vw">
-        <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text">
-          Edit Profile
-        </Typography>
 
-        <TextField
-          label="Email"
-          color="success"
-          defaultValue={email}
-          disabled
-        />
+            {/* Title */}
+            <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text">
+              Edit Profile
+            </Typography>
 
-        <br />
-        <br />
+            {/* Start of Input */}
 
-        <TextField
-          error={firstNameError}
-          color="success"
-          defaultValue={firstName}
-          label="First Name"
-          helperText={firstNameError == true ? "Enter a valid first name." : ''}
-          onChange={(e) => firstNameHandler(e.target.value)}
-        />
-        <br />
-        <br />
+            {/* Email */}
+            <TextField
+              label="Email"
+              color="success"
+              defaultValue={email}
+              disabled
+            />
+            <br />
+            <br />
 
-        <TextField
-          error={lastNameError}
-          defaultValue={lastName}
-          color="success"
-          label="Last Name"
-          helperText={lastNameError == true ? "Enter a valid last name." : ''}
-          onChange={(e) => lastNameHandler(e.target.value)}
-        />
-        <br />
-        <br />
+            {/* First Name */}
+            <TextField
+              error={firstNameError}
+              color="success"
+              defaultValue={firstName}
+              label="First Name"
+              helperText={firstNameError == true ? "Enter a valid first name." : ''}
+              onChange={(e) => firstNameHandler(e.target.value)}
+            />
+            <br />
+            <br />
 
-        <TextField
-          error={genderError}
-          defaultValue={gender}
-          select
-          color="success"
-          label="Select"
-          value={gender}
-          helperText={genderError == true ? "Gender cannot be empty." : ''}
-          onChange={(e) => genderHandler(e.target.value)}
-        >
-          <MenuItem key="m" value="m">
-            Male
-          </MenuItem>
-          <MenuItem key="f" value="f">
-            Female
-          </MenuItem>
-        </TextField>
-        <br />
-        <br />
+            {/* Last Name */}
+            <TextField
+              error={lastNameError}
+              defaultValue={lastName}
+              color="success"
+              label="Last Name"
+              helperText={lastNameError == true ? "Enter a valid last name." : ''}
+              onChange={(e) => lastNameHandler(e.target.value)}
+            />
+            <br />
+            <br />
 
-        <TextField
-          error={ageError}
-          defaultValue={age}
-          color="success"
-          label="Age"
-          helperText={ageError == true ? "Enter a valid age." : ''}
-          onChange={(e) => ageHandler(e.target.value)}
-        />
-        <br />
-        <br />
+            {/* Gender */}
+            <TextField
+              error={genderError}
+              defaultValue={gender}
+              select
+              color="success"
+              label="Select"
+              value={gender}
+              helperText={genderError == true ? "Gender cannot be empty." : ''}
+              onChange={(e) => genderHandler(e.target.value)}
+            >
+              <MenuItem key="m" value="m">
+                Male
+              </MenuItem>
+              <MenuItem key="f" value="f">
+                Female
+              </MenuItem>
+            </TextField>
+            <br />
+            <br />
 
-        <TextField
-          error={phoneError}
-          defaultValue={phone}
-          color="success"
-          label="Phone"
-          helperText={phoneError == true ? "Enter a valid phone number." : ''}
-          onChange={(e) => phoneHandler(e.target.value)}
-        />
-        <br />
-        <br />
-        {editFailedAlert ? <>{editFailedAlert} <br /></> : null}
+            {/* Age */}
+            <TextField
+              error={ageError}
+              defaultValue={age}
+              color="success"
+              label="Age"
+              helperText={ageError == true ? "Enter a valid age." : ''}
+              onChange={(e) => ageHandler(e.target.value)}
+            />
+            <br />
+            <br />
 
-        <Button onClick={profileEditHandler} className="clr_green" variant="contained">Edit Profile</Button>
+            {/* Phone */}
+            <TextField
+              error={phoneError}
+              defaultValue={phone}
+              color="success"
+              label="Phone"
+              helperText={phoneError == true ? "Enter a valid phone number." : ''}
+              onChange={(e) => phoneHandler(e.target.value)}
+            />
+            <br />
+            <br />
+            {/* End of Input */}
 
-        <br />
-        <br />
+            {/* If alert exists,  add alert else null */}
+            {editUserAlert ? <>{editUserAlert} <br /></> : null}
 
-        {editSuccessAlert ? <>{editSuccessAlert} <br /></> : null}
-
-        </CardContent>
+            <Button onClick={profileEditHandler} className="clr_green" variant="contained">Edit Profile</Button>
+          </CardContent>
         </Card>
 
       </Grid>
