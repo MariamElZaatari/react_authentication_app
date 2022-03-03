@@ -11,35 +11,26 @@ import ImageSlider from '../components/ImageSlider';
 import { SliderData } from '../components/SliderData';
 import '../assets/css/slider.css';
 
-
-
-// import MuiImageSlider from 'mui-image-slider';
-
-// // import { UserContext } from '../context/UserContext';
-
-// const images = [
-//     'https://homepages.cae.wisc.edu/~ece533/images/airplane.png',
-//     'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
-//     'https://homepages.cae.wisc.edu/~ece533/images/baboon.png',
-//     'https://homepages.cae.wisc.edu/~ece533/images/barbara.png',
-// ];
-
-// <MuiImageSlider images={images}/>
-
 export default function Home() {
-
-  // const { user, setUser } = useContext(UserContext);
 
   return (
     <div>
+      {/* Two Containers for Image Slider and Our Services*/}
+
+      {/* Container 1 */}
       <Container maxWidth="lg" className="section">
         <ImageSlider slides={SliderData} />
       </Container>
+
+      {/* Container 2 */}
       <Container maxWidth="lg" className="section">
 
+        {/* Title */}
         <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="header clr_brown_text">
           Our Services
         </Typography>
+
+        {/* Grid with Four Grid Items; Each Item has a Service Component */}
         <Grid container
           spacing={3}
           direction="row"
@@ -47,26 +38,28 @@ export default function Home() {
           justifyContent="center"
           style={{ minHeight: '41vh' }}>
 
+          {/* Grid Item 1 */}
           <Grid item xs={12} sm={6} md={3}>
             <Service image={RecipeImage} name="Share Your Recipes" desc="Share your recipes with your friends, and wait for the feedback." />
           </Grid>
 
+          {/* Grid Item 2 */}
           <Grid item xs={12} sm={6} md={3}>
             <Service image={FridgeImage} name="Manage Your Fridge" desc="Manage your fridge by adding products using a built-in barcode scanner." />
           </Grid>
 
-
+          {/* Grid Item 3 */}
           <Grid item xs={12} sm={6} md={3}>
             <Service image={ShopImage} name="Shop Missing Ingredients" desc="Shop missing ingredients from our ButlerChef Shop with One Click Away." />
           </Grid>
 
+          {/* Grid Item 4 */}
           <Grid item xs={12} sm={6} md={3}>
             <Service image={SearchImage} name="Find Quick Recipes" desc="Search for recipes based on the time and day or your fridge products." />
           </Grid>
 
         </Grid>
       </Container>
-      {/* <MuiImageSlider/> */}
     </div>
   )
 }
