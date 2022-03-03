@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import '../assets/css/signup.css'
 import { useNavigate } from "react-router-dom";
-import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
@@ -18,32 +17,80 @@ export default function Signup() {
 
   const navigate = useNavigate();
 
+  // Create useState alert that returns alert Stateful Value and set alert Function to update it
   const [SignUpFailedAlert, setSignUpFailedAlert] = useState(null);
 
+  // Create Email useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [gender, setGender] = useState("m");
-  const [age, setAge] = useState(0);
-  const [phone, setPhone] = useState("");
-
-
   const [emailError, setEmailError] = useState(false);
+  const emailHandler = (email) => {
+    setEmailError(false);
+    setEmail(email);
+  }
+
+  // Create Password useState, Email Error Use State, and Email Handler Function for retrieving email onChange
+  const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
+  const passwordHandler = (password) => {
+    setPasswordError(false);
+    setPassword(password);
+  }
+
+  // Create Password Confirmation useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [passwordConfirmationError, setPasswordConfirmationError] = useState(false);
+  const passwordConfirmationHandler = (cPassword) => {
+    setPasswordConfirmationError(false);
+    setPasswordConfirmation(cPassword);
+  }
+
+  // Create First Name useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
+  const [firstName, setFirstName] = useState("");
   const [firstNameError, setFirstNameError] = useState(false);
+  const firstNameHandler = (firstName) => {
+    setFirstNameError(false);
+    setFirstName(firstName);
+  }
+
+  // Create lastName useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
+  const [lastName, setLastName] = useState("");
   const [lastNameError, setLastNameError] = useState(false);
+  const lastNameHandler = (lastName) => {
+    setLastNameError(false);
+    setLastName(lastName);
+  }
+
+  // Create Gender useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
+  const [gender, setGender] = useState("m");
   const [genderError, setGenderError] = useState(false);
+  const genderHandler = (gender) => {
+    setGenderError(false);
+    setGender(gender);
+  }
+
+  // Create Age useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
+  const [age, setAge] = useState(0);
   const [ageError, setAgeError] = useState(false);
+  const ageHandler = (age) => {
+    setAgeError(false);
+    setAge(age);
+  }
+
+  // Create Phone useState, Email Error Use State, and Email Handler Function for retrieving email onChange 
+  const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState(false);
+  const phoneHandler = (phone) => {
+    setPhoneError(false);
+    setPhone(phone);
+  }
 
-
+  // Register Handler Function: Resets Alert, Validates Input, and Posting data using axios
   const registerHandler = () => {
 
+    // Reset Alert
     setSignUpFailedAlert(null)
 
+    // Validate Input for Error
     if (isEmail(email)) {
       setEmailError(false);
     }
@@ -100,10 +147,12 @@ export default function Signup() {
       setPhoneError(true);
     }
 
-    if (!isEmail(email) || password.length < 6 || passwordConfirmation !== password || firstName.length <= 0 || !(/^[a-zA-Z]+$/.test(firstName)) || lastName.length <= 0 || !(/^[a-zA-Z]+$/.test(lastName)) ||!(gender === "m" || gender === "f") || age < 12 || !(/^[0-9]+$/.test(age)) || phone.length !== 8 || !(/^[0-9]+$/.test(phone))) {
+    // Validate Input to Abort Axios
+    if (!isEmail(email) || password.length < 6 || passwordConfirmation !== password || firstName.length <= 0 || !(/^[a-zA-Z]+$/.test(firstName)) || lastName.length <= 0 || !(/^[a-zA-Z]+$/.test(lastName)) || !(gender === "m" || gender === "f") || age < 12 || !(/^[0-9]+$/.test(age)) || phone.length !== 8 || !(/^[0-9]+$/.test(phone))) {
       return false;
     }
 
+    // Axios
     AuthService.Register(email, password, passwordConfirmation, firstName, lastName, gender, age, phone)
       .then(({ data }) => {
         console.log("r")
@@ -117,47 +166,10 @@ export default function Signup() {
       })
   }
 
-  const emailHandler = (email) => {
-    setEmailError(false);
-    setEmail(email);
-  }
-
-  const passwordHandler = (password) => {
-    setPasswordError(false);
-    setPassword(password);
-  }
-
-  const passwordConfirmationHandler = (cPassword) => {
-    setPasswordConfirmationError(false);
-    setPasswordConfirmation(cPassword);
-  }
-
-  const firstNameHandler = (firstName) => {
-    setFirstNameError(false);
-    setFirstName(firstName);
-  }
-
-  const lastNameHandler = (lastName) => {
-    setLastNameError(false);
-    setLastName(lastName);
-  }
-
-  const genderHandler = (gender) => {
-    setGenderError(false);
-    setGender(gender);
-  }
-
-  const ageHandler = (age) => {
-    setAgeError(false);
-    setAge(age);
-  }
-
-  const phoneHandler = (phone) => {
-    setPhoneError(false);
-    setPhone(phone);
-  }
 
   return (
+
+    // Grid with One Grid Item
     <Grid
       container
       spacing={0}
@@ -172,10 +184,17 @@ export default function Signup() {
         <Card className='card'>
           <CardContent align="center" width="50vw">
 
+            {/* Start of Title */}
             <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text">
-              Register
+              Let's Get Started.
             </Typography>
+            <Typography gutterBottom variant="h4" component="div" pt={2} pb={2} align="center" fontWeight={300} className="clr_brown_text subtitle">
+              You are one click away from joining <br />our food lovers community.
+            </Typography>
+            {/* End of Title */}
 
+            {/* Start of Input */}
+            {/* Email */}
             <TextField
               error={emailError}
               label="Email"
@@ -183,10 +202,10 @@ export default function Signup() {
               helperText={emailError == true ? "Enter a valid email." : ''}
               onChange={(e) => emailHandler(e.target.value)}
             />
-
             <br />
             <br />
 
+            {/* Password */}
             <TextField
               error={passwordError}
               type="password"
@@ -198,6 +217,7 @@ export default function Signup() {
             <br />
             <br />
 
+            {/* Password Confirm */}
             <TextField
               error={passwordConfirmationError}
               type="password"
@@ -209,6 +229,7 @@ export default function Signup() {
             <br />
             <br />
 
+            {/* First Name */}
             <TextField
               error={firstNameError}
               color="success"
@@ -219,6 +240,7 @@ export default function Signup() {
             <br />
             <br />
 
+            {/* Last Name */}
             <TextField
               error={lastNameError}
               color="success"
@@ -229,6 +251,7 @@ export default function Signup() {
             <br />
             <br />
 
+            {/* Gender */}
             <TextField
               error={genderError}
               select
@@ -248,6 +271,7 @@ export default function Signup() {
             <br />
             <br />
 
+            {/* Age */}
             <TextField
               error={ageError}
               color="success"
@@ -257,6 +281,8 @@ export default function Signup() {
             />
             <br />
             <br />
+
+            {/* Phone */}
             <TextField
               error={phoneError}
               defaultValue={phone}
@@ -268,6 +294,7 @@ export default function Signup() {
             <br />
             <br />
 
+            {/* If alert exists,  add alert else null */}
             {SignUpFailedAlert ? <>{SignUpFailedAlert} <br /></> : null}
 
             <Button onClick={registerHandler} className="button">Register</Button>

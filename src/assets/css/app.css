@@ -178,6 +178,15 @@
         font-weight: 500 !important;
         font-size: x-large !important;
     }
+    .card {
+        border-radius: 21px !important;
+        width: fit-content;
+        height: fit-content;
+        margin-top: 41px !important;
+        margin-bottom: 41px !important;
+        margin-right: 21px !important;
+        margin-left: 21px !important;
+    }
     .card[type="service"] {
         border-radius: 21px !important;
         width: fit-content;
