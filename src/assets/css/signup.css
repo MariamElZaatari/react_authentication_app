@@ -1,8 +1,12 @@
 /* Signup_ */
 
-.MuiFormControl-root{
+
+/* Layout */
+
+.MuiFormControl-root {
     width: 250px !important;
 }
-.MuiButton-root{
+
+.MuiButton-root {
     width: 250px !important;
 }
